@@ -81,7 +81,7 @@ class Logic(object):
             os_ = platform.system()
             cpu = 'Intel'
             if os_ == 'Linux':
-                if platform.platform().fine('x86_64') == -1:
+                if platform.platform().find('x86_64') == -1:
                     cpu = 'ARM'
             path_ = os.path.join(os.path.dirname(__file__), 'bin', cpu, os_, 'xteve')
             if os_ == 'Windows':
