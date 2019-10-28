@@ -4,7 +4,7 @@
 <div>
   {{ macros.setting_checkbox('status', '실행 상태', value=arg['status'], desc='On : 실행중') }}
   <form id='setting' name='setting'>
-    {{ macros.setting_checkbox('auto_start', '시작시 자동실행', value=arg['auto_start'], desc='On : 시작시 자동으로 실행합니다.') }}
+    {{ macros.setting_checkbox('auto_start', '시작시 자동실행', value=arg['auto_start'], desc=['On : 시작시 자동으로 실행합니다.', '기본 포트 : 34400', 'Home : http://SJVA 설치 IP:34400/web']) }}
 
     {{ macros.setting_button([['global_setting_save_btn', '저장']]) }}
   </form>
