@@ -30,6 +30,7 @@ from datetime import datetime
 class Logic(object):
     db_default = {
         'auto_start' : 'False',
+        'url' : 'http://localhost:34400/web'
     }
 
     current_process = None

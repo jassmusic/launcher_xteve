@@ -37,12 +37,12 @@ def plugin_unload():
     Logic.plugin_unload()
 
 plugin_info = {
-    'version' : '0.1.0.1',
+    'version' : '0.1.0.2',
     'name' : 'xTeVe',
     'category_name' : 'launcher',
     'icon' : '',
     'developer' : 'soju6jan',
-    'description' : 'xTeVe 런처.',
+    'description' : 'xTeVe 런처',
     'home' : 'https://github.com/soju6jan/launcher_xteve_sjva',
     'more' : '',
 }
