@@ -83,11 +83,14 @@ class Logic(object):
     def scheduler_start():
         try:
             logger.debug('%s scheduler_start', package_name)
+            
             os_ = platform.system()
             cpu = 'Intel'
             if os_ == 'Linux':
                 if platform.platform().find('x86_64') == -1:
-                    cpu = 'ARM'
+                    cpu = 'ARM64'
+                    if platform.architecture()[0]=='32bit':
+                        cpu = 'ARM32'
             path_ = os.path.join(os.path.dirname(__file__), 'bin', cpu, os_, 'xteve')
             if os_ == 'Windows':
                 path_ += '.exe'
