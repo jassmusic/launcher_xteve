@@ -37,7 +37,7 @@ def plugin_unload():
     Logic.plugin_unload()
 
 plugin_info = {
-    'version' : '0.1.0.3',
+    'version' : '0.1.0.4',
     'name' : 'xTeVe',
     'category_name' : 'launcher',
     'icon' : '',

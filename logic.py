@@ -30,7 +30,8 @@ from datetime import datetime
 class Logic(object):
     db_default = {
         'auto_start' : 'False',
-        'url' : 'http://localhost:34400/web'
+        'url' : 'http://localhost:34400/web',
+        'arm_bit' : '0'
     }
 
     current_process = None
@@ -89,7 +90,9 @@ class Logic(object):
             if os_ == 'Linux':
                 if platform.platform().find('x86_64') == -1:
                     cpu = 'ARM64'
-                    if platform.architecture()[0]=='32bit':
+                    #if platform.architecture()[0]=='32bit':
+                    #    cpu = 'ARM32'
+                    if ModelSetting.get('arm_bit') == '1':
                         cpu = 'ARM32'
             path_ = os.path.join(os.path.dirname(__file__), 'bin', cpu, os_, 'xteve')
             if os_ == 'Windows':
