@@ -44,7 +44,7 @@ plugin_info = {
     'icon' : '',
     'developer' : 'soju6jan',
     'description' : 'xTeVe 런처<br><a href="https://xteve.de" target="_blank">xTeVe 홈페이지</a>',
-    'home' : 'https://github.com/soju6jan/launcher_xteve_sjva',
+    'home' : 'https://github.com/soju6jan/launcher_xteve',
     'more' : '',
 }
 #########################################################
