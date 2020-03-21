@@ -25,8 +25,8 @@ from system.logic import SystemLogic
 package_name = __name__.split('.')[0]
 logger = get_logger(package_name)
 
-from logic import Logic
-from model import ModelSetting
+from .logic import Logic
+from .model import ModelSetting
 
 
 blueprint = Blueprint(package_name, package_name, url_prefix='/%s' %  package_name, template_folder=os.path.join(os.path.dirname(__file__), 'templates'))
@@ -68,10 +68,10 @@ def home():
 
 @blueprint.route('/<sub>')
 @login_required
-def detail(sub): 
+def first_menu(sub): 
     if sub == 'setting':
-        setting_list = db.session.query(ModelSetting).all()
-        arg = Util.db_list_to_dict(setting_list)
+        arg = ModelSetting.to_dict()
+        arg['package_name']  = package_name
         arg['status'] = str(Logic.current_process is not None)
         return render_template('%s_%s.html' % (package_name, sub), arg=arg)
     elif sub == 'log':
@@ -82,31 +82,26 @@ def detail(sub):
 @blueprint.route('/ajax/<sub>', methods=['GET', 'POST'])
 @login_required
 def ajax(sub):
-    logger.debug('AJAX %s %s', package_name, sub)
-    if sub == 'setting_save':
-        try:
-            ret = Logic.setting_save(request)
+    try:
+        if sub == 'setting_save':
+            ret = ModelSetting.setting_save(request)
             return jsonify(ret)
-        except Exception as e: 
-            logger.error('Exception:%s', e)
-            logger.error(traceback.format_exc())
-    elif sub == 'status':
-        try:
+        elif sub == 'status':
             todo = request.form['todo']
             if todo == 'true':
                 if Logic.current_process is None:
                     Logic.scheduler_start()
                     ret = 'execute'
                 else:
-                    ret =  'already_execute'
+                    ret = 'already_execute'
             else:
                 if Logic.current_process is None:
-                    ret =  'already_stop'
+                    ret = 'already_stop'
                 else:
                     Logic.scheduler_stop()
                     ret =  'stop'
             return jsonify(ret)
-        except Exception as e: 
-            logger.error('Exception:%s', e)
-            logger.error(traceback.format_exc())
+    except Exception as e: 
+        logger.error('Exception:%s', e)
+        logger.error(traceback.format_exc())
 
