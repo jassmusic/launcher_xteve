@@ -39,11 +39,11 @@ def plugin_unload():
 
 plugin_info = {
     'version' : '0.1.0.4',
-    'name' : 'xTeVe',
+    'name' : u'xTeVe',
     'category_name' : 'launcher',
     'icon' : '',
     'developer' : 'soju6jan',
-    'description' : 'xTeVe 런처<br><a href="https://xteve.de" target="_blank">xTeVe 홈페이지</a>',
+    'description' : u'xTeVe 런처<br><a href="https://xteve.de" target="_blank">xTeVe 홈페이지</a>',
     'home' : 'https://github.com/soju6jan/launcher_xteve',
     'more' : '',
 }
@@ -51,9 +51,9 @@ plugin_info = {
 
 # 메뉴 구성.
 menu = {
-    'main' : [package_name, 'xTeVe'],
+    'main' : [package_name, u'xTeVe'],
     'sub' : [
-        ['setting', '설정'], ['log', '로그']
+        ['setting', u'설정'], ['log', u'로그']
     ], 
     'category' : 'launcher',
 }  
